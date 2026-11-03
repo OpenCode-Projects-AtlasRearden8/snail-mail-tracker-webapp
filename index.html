@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Snail Mailkeeper — a gentle offline pen pal journal</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="site-header">
+  <h1>✉ Snail Mailkeeper</h1>
+  <p class="tagline">A quiet, offline place to keep up with real mail and pen pals — no accounts, no cloud, no guilt.</p>
+</header>
+
+<main>
+  <div class="container" data-tab-panel="home">
+    <section id="reminder-mount" aria-label="Gentle reminders"></section>
+
+    <div class="grid">
+      <section class="card" aria-labelledby="pals-h">
+        <h2 id="pals-h">Pen pals</h2>
+        <form id="pal-form" class="stack">
+          <label>Name <strong aria-hidden="true">*</strong>
+            <input id="pal-name" type="text" required placeholder="e.g. Miriam">
+          </label>
+          <label>Handle / nick (optional)
+            <input id="pal-handle" type="text" placeholder="e.g. miriam.from.tasmania">
+          </label>
+          <label>Birthday (MM-DD, optional)
+            <input id="pal-birthday" type="text" inputmode="numeric" placeholder="MM-DD">
+          </label>
+          <label>Privately nudge me after (days)
+            <input id="pal-followup" type="number" min="7" max="365" value="30">
+          </label>
+          <label>Address (optional — hidden by default)
+            <textarea id="pal-address" rows="2" placeholder="Only saved on this device"></textarea>
+          </label>
+          <label>Privacy note (optional)
+            <input id="pal-privacy" type="text" placeholder="e.g. PO box only; uses a pen name">
+          </label>
+          <input type="hidden" id="pal-warning">
+          <button type="submit" class="btn">Add pen pal</button>
+        </form>
+        <p id="form-message" class="form-message" aria-live="polite"></p>
+        <div id="pals-mount"></div>
+      </section>
+
+      <section class="card" aria-labelledby="letters-h">
+        <h2 id="letters-h">Letters log</h2>
+        <form id="letter-form" class="stack">
+          <label>Pen pal <select id="letter-pal"></select></label>
+          <fieldset class="radio-row">
+            <legend class="sr-only">Direction</legend>
+            <label><input type="radio" name="letter-direction" value="sent" checked> Sent</label>
+            <label><input type="radio" name="letter-direction" value="received"> Received</label>
+            <label><input type="radio" name="letter-direction" value="sent" id="letter-birthday"> 🎂 birthday card</label>
+          </fieldset>
+          <label>Date
+            <input id="letter-date" type="date">
+          </label>
+          <label>Note (optional)
+            <textarea id="letter-note" rows="2" placeholder="e.g. wrote about the garden"></textarea>
+          </label>
+          <button type="submit" class="btn">Log letter</button>
+        </form>
+        <div id="letters-mount"></div>
+      </section>
+    </div>
+
+    <div class="grid">
+      <section class="card" aria-labelledby="ideas-h">
+        <h2 id="ideas-h">Ideas journal</h2>
+        <form id="idea-form" class="stack">
+          <label>Idea for someday
+            <input id="idea-text" type="text" placeholder="e.g. press that leaf and send it">
+          </label>
+          <button type="submit" class="btn">Park the idea</button>
+        </form>
+        <div id="ideas-mount"></div>
+      </section>
+
+      <section class="card" aria-labelledby="prompts-h">
+        <h2 id="prompts-h">Prompts I haven't answered</h2>
+        <form id="prompt-form" class="stack">
+          <label>The question or prompt (optional: who asked)
+            <input id="prompt-text" type="text" placeholder="e.g. what music did you love at 15?">
+          </label>
+          <label>From (optional)
+            <select id="prompt-pal"></select>
+          </label>
+          <button type="submit" class="btn">Park the prompt</button>
+        </form>
+        <div id="prompts-mount"></div>
+      </section>
+    </div>
+
+    <div class="grid">
+      <section class="card" aria-labelledby="occasions-h">
+        <h2 id="occasions-h">Birthdays &amp; occasion stamps</h2>
+        <form id="occasion-form" class="stack">
+          <label>Occasion name
+            <input id="occasion-name" type="text" placeholder="e.g. housewarming card">
+          </label>
+          <label>Date
+            <input id="occasion-date" type="date">
+          </label>
+          <button type="submit" class="btn">Add occasion</button>
+        </form>
+        <div id="occasions-mount"></div>
+      </section>
+
+      <section class="card" aria-labelledby="data-h">
+        <h2 id="data-h">Your data, your device</h2>
+        <p class="muted">Everything lives in this browser's local storage. No accounts, no servers, no tracking. You can take your file with you:</p>
+        <div class="stack">
+          <button type="button" id="export-btn" class="btn">Export everything as JSON</button>
+          <label class="file-label">Restore from an export
+            <input type="file" id="import-file" accept="application/json">
+          </label>
+          <button type="button" id="erase-btn" class="btn btn-danger">Erase everything</button>
+        </div>
+      </section>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <p>Gentle by design: snooze anything, no streaks, no red badges. Made for the handmade-letter revival and low-energy days.</p>
+  <p>© 2026 Asdale Dynamics, LLC · MIT licensed · offline · no accounts</p>
+</footer>
+
+<script src="core.js"></script>
+<script src="ui.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

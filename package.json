@@ -1,0 +1,11 @@
+{
+  "name": "snail-mail-tracker-webapp",
+  "version": "1.0.0",
+  "description": "Snail Mailkeeper — an offline, privacy-first pen pal journal. No accounts, no dependencies.",
+  "private": true,
+  "scripts": {
+    "test": "node tests/run-tests.js"
+  },
+  "license": "MIT",
+  "author": "Asdale Dynamics, LLC"
+}
